@@ -39,6 +39,10 @@ public class AR_Tap2Place : MonoBehaviour
     [Tooltip("Do we destroy the previous mesh with each spawn?")]
     private bool deletePrevious = false;
 
+    [SerializeField]
+    [Tooltip("Start with Ghost?")]
+    private bool showInitialGhost = false;
+
     #endregion
     // =====================================
     #region UIfields
@@ -150,6 +154,9 @@ public class AR_Tap2Place : MonoBehaviour
         countText.text = "";
         spawningOptions.SetActive(false);
         UI_Options.SetActive(false);
+        // initially hide the ghost based on showInitialGhost
+        placementIndicator.transform.GetChild(0).gameObject.SetActive(showInitialGhost);
+
 
     }
     IEnumerator GetRequest(string url)
